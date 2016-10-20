@@ -1,0 +1,14 @@
+form {
+  text-align: center;
+
+  input[type=text] {
+    border-radius: 2px;
+    line-height: 1.25;
+    padding: .5rem;
+    width: 400px;
+  }
+
+  input[type=submit] {
+    margin-left: 10px;
+  }
+}

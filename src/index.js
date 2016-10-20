@@ -1,6 +1,7 @@
 require("./stylesheets/birdie.scss");
+
 var React = require("react");
 var ReactDOM = require("react-dom");
-var Birdie = require("./Birdie").Birdie;
+var Root = require("./components/Root").Root;
 
-ReactDOM.render(React.createElement(Birdie, {}), document.getElementById("birdie"));
+ReactDOM.render(React.createElement(Root, {}), document.getElementById("app"));

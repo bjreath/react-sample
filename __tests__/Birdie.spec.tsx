@@ -1,8 +1,8 @@
 import * as React from "react";
 import { shallow } from "enzyme";
-import { Birdie } from "../src/Birdie";
+import { App } from "../src/components/App";
 
 it("renders some text", () => {
-  const birdie = shallow(<Birdie />);
+  const birdie = shallow(<App />);
   expect(birdie.text()).toContain("Birdie");
 });
