@@ -10,7 +10,6 @@ export function chirps(state = initialState, action) {
     case constants.REQUEST_CHIRPS:
       return state;
     case constants.FETCH_CHIRPS_SUCCESS:
-      console.log(action);
       return extend({}, state, { chirps: action.payload });
     case constants.FETCH_CHIRPS_FAILURE:
       return extend({}, state, { chirps: [] });
