@@ -14,6 +14,7 @@
     "jest": "^16.0.1",
     "node-sass": "^3.10.1",
     "react-addons-test-utils": "^15.3.2",
+    "react-hot-loader": "^3.0.0-beta.6",
     "react-test-renderer": "^15.3.2",
     "sass-loader": "^4.0.2",
     "source-map-loader": "^0.1.5",
@@ -55,7 +56,7 @@
   },
   "scripts": {
     "build": "webpack -d --config ./webpack.config.js",
-    "start": "webpack-dev-server --config ./webpack.config.js --hot --inline --open",
+    "start": "webpack-dev-server --config ./webpack.config.js --hot --inline",
     "test": "jest"
   }
 }

@@ -4,13 +4,16 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: __dirname + "/src",
 
-  entry: {
-    birdie: __dirname + "/src/index"
-  },
+  entry: [
+    "react-hot-loader/patch",
+    "webpack-dev-server/client?http://0.0.0.0:8080",
+    "webpack/hot/only-dev-server",
+    __dirname + "/src/index"
+  ],
 
   output: {
     path: __dirname + "/dist",
-    filename: "[name].js"
+    filename: "birdie.js"
   },
 
   devServer : {
@@ -39,6 +42,6 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin("[name].css")
+    new ExtractTextPlugin("birdie.css")
   ]
 };
