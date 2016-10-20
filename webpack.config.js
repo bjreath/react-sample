@@ -1,4 +1,5 @@
 var webpack = require("webpack");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: __dirname + "/src",
@@ -20,7 +21,7 @@ module.exports = {
   devtool: "source-map",
 
   resolve: {
-    extensions: ["", ".ts", ".tsx", ".js"],
+    extensions: ["", ".ts", ".tsx", ".js", ".jsx", ".scss"],
   },
 
   module: {
@@ -29,9 +30,15 @@ module.exports = {
         test: /\.tsx?$/,
         loaders: ["ts-loader"],
         exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract("style", "css!sass")
       }
     ]
   },
 
-  plugins: []
+  plugins: [
+    new ExtractTextPlugin("[name].css")
+  ]
 };

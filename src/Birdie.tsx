@@ -6,6 +6,6 @@ export class Birdie extends React.Component<{}, {}> {
   }
 
   public render() {
-    return <div>Birdie</div>;
+    return <div>Birdie 2</div>;
   }
 }

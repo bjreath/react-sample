@@ -6,6 +6,20 @@
   "author": "Brian J Reath",
   "license": "MIT",
   "devDependencies": {
+    "@types/enzyme": "^2.4.36",
+    "@types/jest": "^15.1.32",
+    "css-loader": "^0.25.0",
+    "enzyme": "^2.5.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "jest": "^16.0.1",
+    "node-sass": "^3.10.1",
+    "react-addons-test-utils": "^15.3.2",
+    "react-test-renderer": "^15.3.2",
+    "sass-loader": "^4.0.2",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "ts-jest": "^0.1.8",
+    "ts-loader": "^0.9.4",
     "typescript": "^2.0.3",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
@@ -18,13 +32,20 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
-    "redux": "^3.6.0",
-    "source-map-loader": "^0.1.5",
-    "ts-loader": "^0.9.4"
+    "redux": "^3.6.0"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/ts-jest/preprocessor.js",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   },
   "scripts": {
-    "build": "webpack --config ./webpack.config.js",
+    "build": "webpack -d --config ./webpack.config.js",
     "start": "webpack-dev-server --config ./webpack.config.js --hot --inline --open",
-    "test": "karma start"
+    "test": "jest"
   }
 }
