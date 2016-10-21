@@ -1,12 +1,14 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
+import { Chirp } from "../models/Chirp";
 import { Navbar } from "./Navbar";
 import { ChirpForm } from "./ChirpForm";
 import { Timeline } from "./Timeline";
 import { createChirp, fetchChirps } from "../actions";
 
 interface StateProps {
+  chirps: Chirp[]
 }
 
 interface DispatchProps {
@@ -30,7 +32,7 @@ class App extends React.Component<StateProps & DispatchProps, {}> {
 
         <div className="container">
           <ChirpForm onSubmit={this.props.onSubmit} />
-          <Timeline />
+          <Timeline chirps={this.props.chirps} />
         </div>
       </div>
     );
@@ -38,7 +40,9 @@ class App extends React.Component<StateProps & DispatchProps, {}> {
 }
 
 function mapStateToProps(state): StateProps {
-  return {};
+  return {
+    chirps: state.chirps
+  };
 }
 
 function mapDispatchToProps(dispatch): DispatchProps {

@@ -49,7 +49,8 @@ export function requestChirps() {
 export function fetchChirpsSuccess(chirps) {
   return {
     type: constants.FETCH_CHIRPS_SUCCESS,
-    payload: chirps
+    payload: chirps,
+    receivedAt: new Date()
   };
 }
 
@@ -70,7 +71,8 @@ export function requestCreateChirp(chirp) {
 export function createChirpSuccess(chirp) {
   return {
     type: constants.CREATE_CHIRP_SUCCESS,
-    payload: chirp
+    payload: chirp,
+    receivedAt: new Date()
   };
 }
 

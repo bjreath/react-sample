@@ -8,7 +8,7 @@ interface Props {
   chirps: Chirp[];
 }
 
-function ChirpTimeline(props: Props) {
+export function Timeline(props: Props) {
   return(
     <div className="timeline">
       <h1>Timeline</h1>
@@ -16,18 +16,3 @@ function ChirpTimeline(props: Props) {
     </div>
   )
 }
-
-function mapStateToProps(state) {
-  return {
-    chirps: state.chirps
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-  };
-}
-
-const Timeline = connect(mapStateToProps, mapDispatchToProps)(ChirpTimeline);
-
-export { Timeline };

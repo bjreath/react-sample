@@ -14,6 +14,8 @@ gem install foreman
 yarn install
 cd server
 bundle install
+bundle exec rake db:create db:migrate
+cd ..
 ```
 
 ## Starting the Server
