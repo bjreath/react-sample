@@ -1,5 +1,4 @@
 import * as React from "react";
-import { connect } from "react-redux";
 
 import { Chirp } from "../models/Chirp";
 import { ChirpCard } from "./ChirpCard";

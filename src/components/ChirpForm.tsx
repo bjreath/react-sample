@@ -1,7 +1,6 @@
 import * as React from "react";
 
 interface Props {
-  onSubmit: Function;
 }
 
 interface State {
@@ -46,10 +45,6 @@ export class ChirpForm extends React.Component<Props, State> {
 
   private handleSubmit(event) {
     event.preventDefault();
-    this.props.onSubmit({
-      author: this.state.chirpAuthor,
-      content: this.state.chirpText
-    });
     this.setState({ chirpText: "" } as State);
   }
 }

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { connect } from "react-redux";
 
 import { Chirp } from "../models/Chirp";
 import { Navbar } from "./Navbar";
@@ -7,22 +6,24 @@ import { ChirpForm } from "./ChirpForm";
 import { Timeline } from "./Timeline";
 import { createChirp, fetchChirps } from "../actions";
 
-interface StateProps {
+interface Props {
+}
+
+interface State {
   chirps: Chirp[]
 }
 
-interface DispatchProps {
-  fetchChirpsIfNeeded?: Function;
-  onSubmit?: Function;
-}
-
-class App extends React.Component<StateProps & DispatchProps, {}> {
+export class Application extends React.Component<Props, State> {
   constructor(props) {
     super(props);
+
+    this.state = {
+      chirps: []
+    };
   }
 
   public componentDidMount() {
-    this.props.fetchChirpsIfNeeded();
+    this.fetchChirpsIfNeeded();
   }
 
   public render() {
@@ -31,31 +32,20 @@ class App extends React.Component<StateProps & DispatchProps, {}> {
         <Navbar />
 
         <div className="container">
-          <ChirpForm onSubmit={this.props.onSubmit} />
-          <Timeline chirps={this.props.chirps} />
+          <ChirpForm />
+          <Timeline chirps={this.state.chirps} />
         </div>
       </div>
     );
   }
+
+  private fetchChirpsIfNeeded() {
+    let _this = this;
+    fetch("http://localhost:3000/chirps.json")
+      .then(function(response) {
+        response.json().then((json) => {
+          _this.setState({ chirps: json });
+        });
+      });
+  }
 }
-
-function mapStateToProps(state): StateProps {
-  return {
-    chirps: state.chirps
-  };
-}
-
-function mapDispatchToProps(dispatch): DispatchProps {
-  return {
-    fetchChirpsIfNeeded: function() {
-      dispatch(fetchChirps());
-    },
-    onSubmit: function(values) {
-      dispatch(createChirp(values));
-    }
-  };
-}
-
-const Application = connect(mapStateToProps, mapDispatchToProps)(App);
-
-export { Application };
