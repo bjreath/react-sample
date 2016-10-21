@@ -38,8 +38,19 @@ export function createChirp(chirp) {
 }
 
 export function removeChirp(chirp) {
-  return {
-    type: constants.REQUEST_REMOVE_CHIRP
+  return (dispatch) => {
+    dispatch(requestRemoveChirp(chirp));
+    fetch(`http://localhost:3000/chirps/${chirp.id}.json`, {
+      method: "DELETE",
+      mode: "cors",
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }).then(function(response) {
+      dispatch(removeChirpSuccess(chirp));
+    }).catch(function(response) {
+      dispatch(removeChirpFailure(chirp));
+    });
   };
 }
 
@@ -86,5 +97,26 @@ export function createChirpFailure(errors) {
   return {
     type: constants.CREATE_CHIRP_FAILURE,
     payload: errors
+  };
+}
+
+export function requestRemoveChirp(chirp) {
+  return {
+    type: constants.REQUEST_REMOVE_CHIRP,
+    payload: chirp
+  };
+}
+
+export function removeChirpSuccess(chirp) {
+  return {
+    type: constants.REMOVE_CHIRP_SUCCESS,
+    payload: chirp
+  };
+}
+
+export function removeChirpFailure(chirp) {
+  return {
+    type: constants.REMOVE_CHIRP_FAILURE,
+    payload: chirp
   };
 }

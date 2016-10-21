@@ -25,6 +25,16 @@ export function chirps(state = initialState, action) {
       return { chirps: cpy, isFetching: false, lastUpdated: action.receivedAt };
     case constants.CREATE_CHIRP_FAILURE:
       return state;
+    case constants.REQUEST_REMOVE_CHIRP:
+      return state;
+    case constants.REMOVE_CHIRP_SUCCESS:
+      return {
+        chirps: state.chirps.filter(item => item.id !== action.payload.id),
+        isFetching: state.isFetching,
+        lastUpdated: state.lastUpdated
+      };
+    case constants.REMOVE_CHIRP_FAILURE:
+      return state;
     default:
       return state;
   }
