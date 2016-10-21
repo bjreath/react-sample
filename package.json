@@ -56,7 +56,7 @@
   },
   "scripts": {
     "build": "webpack -d --config ./webpack.config.js",
-    "start": "webpack-dev-server --config ./webpack.config.js --hot --inline",
+    "start": "webpack-dev-server --config ./webpack.config.js --hot --inline --open",
     "test": "jest"
   }
 }
