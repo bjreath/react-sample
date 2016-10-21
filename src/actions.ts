@@ -37,6 +37,12 @@ export function createChirp(chirp) {
   };
 }
 
+export function removeChirp(chirp) {
+  return {
+    type: constants.REQUEST_REMOVE_CHIRP
+  };
+}
+
 // -----------------------------------------------------------------------------
 // Simple Action Creators
 // -----------------------------------------------------------------------------

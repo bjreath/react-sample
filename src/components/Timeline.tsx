@@ -12,7 +12,11 @@ export function Timeline(props: Props) {
   return(
     <div className="timeline">
       <h1>Timeline</h1>
-      { props.chirps.map((chirp) => <ChirpCard key={chirp.id} chirp={chirp} />) }
+      { props.chirps.map((chirp) => {
+          return(
+            <ChirpCard key={chirp.id} chirp={chirp} />
+          );
+        }) }
     </div>
   )
 }
